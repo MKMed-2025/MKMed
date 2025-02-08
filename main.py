@@ -16,7 +16,6 @@ np.random.seed(222)
 torch.cuda.manual_seed_all(222)
 os.environ['PYTHONHASHSEED'] = str(222)
 
-# 创建命令行参数解析器
 parser = argparse.ArgumentParser()
 parser.add_argument('--device', type=str, default='cuda:2' if torch.cuda.is_available() else 'cpu')
 parser.add_argument("--debug", default=False)
