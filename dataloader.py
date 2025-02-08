@@ -15,7 +15,6 @@ class KgDataset(Dataset):
         self.smiles = []
         self.sub_smiles = []
 
-        # 读取文本文件并存储数据
         with open(self.text_file, 'r') as f:
             for line in f:
                 parts = line.strip().split(',')
@@ -38,7 +37,6 @@ class KgDataset(Dataset):
         smiles = self.smiles[idx]
         sub_smiles = self.sub_smiles[idx]
 
-        # 返回图像路径和对应的图谱中的实体id
         return smiles, sub_smiles, entity_id
 
 class ThreeDDataset(Dataset):
@@ -79,22 +77,17 @@ class ImgDataset(Dataset):
         image = self.img_process(image)
         smiles = row['SMILES']
         sub_smiles = row['SUB']
-        # 返回图像路径、文本、SMILES字符串和motif编码序列
         return smiles, image, sub_smiles
 
 class DescDataset(Dataset):
     def __init__(self, dataset_path):
-        # 使用pandas读取CSV文件
         self.data = pd.read_csv(f'{dataset_path}/text.csv')
-        # 确保所有列都存在
         assert 'SMILES' in self.data.columns and 'Description' in self.data.columns and 'decomposed_smiles' in self.data.columns
 
     def __len__(self):
-        # 返回DataFrame的行数
         return len(self.data)
 
     def __getitem__(self, idx):
-        # 根据索引从DataFrame中提取数据
         row = self.data.iloc[idx]
         smiles = row['SMILES']
         desc = row['Description']
@@ -108,7 +101,6 @@ class ChemDataset(Dataset):
         self.smiles = []
         self.sub_smiles = []
 
-        # 读取文本文件并存储数据
         with open(self.text_file, 'r') as f:
             reader = csv.reader(f)
             for parts in reader:
