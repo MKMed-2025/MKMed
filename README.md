@@ -1,6 +1,6 @@
 # MKMed
 
-This is the code repository for the paper `Combating the Bucket Effect: Multi-Knowledge Alignment for Medication Recommendation`.
+This is the code repository for the paper `MKMed: Multi-Knowledge Alignment Framework for Medication Recommendation`.
 
 ## Datasets
 
